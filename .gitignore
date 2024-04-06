@@ -51,3 +51,4 @@ package.json
 /src/
 # poetry
 .venv
+pyproject.toml
