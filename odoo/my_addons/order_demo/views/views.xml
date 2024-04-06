@@ -1,0 +1,80 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="order_demo.list">
+            <field name="name">order_demo list</field>
+            <field name="model">order_demo.order_demo</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="order_name"/>
+                    <field name="order_code"/>
+                    <field name="production_code"/>
+                    <field name="production_date"/>
+                    <field name="production_unit"/>
+                    <field name="apply_unit"/>
+                    <field name="production_purchase"/>
+                    <field name="production_accept"/>
+                    <field name="army"/>
+                    <field name="is_free"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="order_demo.form">
+            <field name="name">order_demo form</field>
+            <field name="model">order_demo.order_demo</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="order_name"/>
+                                <field name="order_code"/>
+                                <field name="production_code"/>
+                                <field name="production_date"/>
+                                <field name="production_unit"/>
+                            </group>
+                            <group>
+                                <field name="apply_unit"/>
+
+                                <field name="buy_unit"/>
+                                <field name="get_unit"/>
+                                <field name="army"/>
+                                <field name="is_free"/>
+                            </group>
+                        </group>
+                        <group string="产品">
+                            <field name="put_product_ids" widget="section_and_note_one2many"
+                                   mode="tree,kanban">
+                                <tree create="1" edit="1" delete="1" editable="top">
+                                    <field name="product_name"/>
+                                    <field name="product_code"/>
+                                    <field name="product_step"/>
+                                    <field name="task_code"/>
+                                    <field name="unit"/>
+                                    <field name="purchase_date"/>
+                                    <field name="submit_date"/>
+                                    <field name="two_submit_date"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="order_demo.action_window">
+            <field name="name">order_demo window</field>
+            <field name="res_model">order_demo.order_demo</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem name="订单管理" id="order_demo.menu_root"/>
+        <menuitem name="订单管理" id="order_demo.menu_1_list" parent="order_demo.menu_root"
+                  action="order_demo.action_window"/>
+
+
+    </data>
+</odoo>

@@ -1,0 +1,96 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="develop_list.list">
+            <field name="name">develop_list list</field>
+            <field name="model">develop_list.develop_list</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="type_by"/>
+                    <field name="contract_name"/>
+                    <button type="object" name="develop_open_business_form_view" icon="fa-area-chart"/>
+                    <field name="contract_time"/>
+                    <field name="contract_code"/>
+                    <field name="capital_type"/>
+                    <field name="sum_capital"/>
+                    <field name="contract_margins"/>
+                    <field name="Our_Company"/>
+                    <field name="other_company"/>
+                    <field name="accounts_receivable"/>
+                    <field name="capital_speed"/>
+                    <field name="receipt_speed"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="develop_list.form">
+            <field name="name">开发列表</field>
+            <field name="model">develop_list.develop_list</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="type_by"/>
+                                <field name="contract_name"/>
+                                <field name="contract_time"/>
+                                <field name="contract_code"/>
+                                <field name="capital_type"/>
+                                <field name="sum_capital"/>
+                            </group>
+                            <group>
+                                <field name="contract_margins"/>
+                                <field name="Our_Company"/>
+                                <field name="other_company"/>
+                                <field name="accounts_receivable"/>
+                                <field name="capital_speed"/>
+                                <field name="receipt_speed"/>
+                            </group>
+                        </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+        <record id="develop_search_view" model="ir.ui.view">
+            <field name="name">develop_view</field>
+            <field name="model">develop_list.develop_list</field>
+            <field name="arch" type="xml">
+                <search>
+                    <searchpanel>
+                        <field name="type_by"/>
+                        <field name="other_company"/>
+                    </searchpanel>
+                </search>
+            </field>
+        </record>
+
+        <record id="develop_graph_view" model="ir.ui.view">
+            <field name="name">开发列表图表</field>
+            <field name="model">develop_list.develop_list</field>
+            <field name="arch" type="xml">
+                <graph type="pie">
+                    <field name="type_by"/>
+                    <field name="other_company"/>
+                </graph>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="develop_list.action_window">
+            <field name="name">develop_list window</field>
+            <field name="res_model">develop_list.develop_list</field>
+            <field name="view_mode">tree,form,search,graph</field>
+        </record>
+
+
+        <menuitem name="型谱分析" id="develop_list.menu_root"/>
+
+
+        <menuitem name="List" id="develop_list.menu_1_list" parent="develop_list.menu_root"
+                  action="develop_list.action_window"/>
+
+
+    </data>
+</odoo>

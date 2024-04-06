@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="inherited_crm_lead_form" model="ir.ui.view">
+        <field name="name">crm.lead.form</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='tag_ids']" position="after">
+                <field name="item_name"  invisible="not active or type == 'lead'"/>
+                <field name="item_type"/>
+                <field name="model_name"/>
+            </xpath>
+            <xpath expr="//group[@name='opportunity_partner']" position="inside">
+
+                <field name="get_time"/>
+                <field name="get_routine"/>
+            </xpath>
+            <xpath expr="//notebook//page[@name='internal_notes']" position="after">
+                <page string="关系人分析">
+                    <group>
+                        <field name="technique_ids" widget="cron_test_one2many"
+                               mode="tree,kanban">
+                            <tree string="关系人分析" create="1" edit="1" delete="1" editable="top"
+                                  hasSelectors_test="1">
+                                <field name="technique_supervisor_satisfy"/>
+                                <field name="technique_head_satisfy"/>
+                                <field name="technique_governor_satisfy"/>
+                            </tree>
+                        </field>
+                        <field name="business_ids" widget="section_and_note_one2many"
+                               mode="tree,kanban">
+                            <tree string="关系人分析" create="1" edit="1" delete="1" editable="top">
+                                <field name="business_supervisor_satisfy"/>
+                                <field name="business_head_satisfy"/>
+                                <field name="business_governor_satisfy"/>
+                            </tree>
+                        </field>
+                        <field name="governor_satisfy"/>
+                        <field name="client_type"/>
+                        <field name="contribute_degree"/>
+                        <field name="account_degree"/>
+                        <field name="model_step"/>
+                        <field name="model_description"/>
+                        <field name="item_description"/>
+                        <field name="progress_ids" widget="section_and_note_one2many"
+                               mode="tree,kanban">
+                            <tree string="进度计划" create="1" edit="1" delete="1" editable="top">
+                                <field name="plan_name"/>
+                                <field name="plan_time"/>
+                                <field name="plan_number"/>
+                                <field name="plan_unit"/>
+                                <field name="plan_content"/>
+
+                            </tree>
+                        </field>
+                        <field name="capital_category"/>
+                        <field name="capital_situation_category"/>
+                        <field name="capital_first_category"/>
+                        <field name="capital_all_category"/>
+                        <field name="limit_category"/>
+                        <field name="compete_category"/>
+
+                        <field name="technique_category"/>
+                        <field name="technique_difficult_category"/>
+                        <field name="item_type_category"/>
+                        <field name="list_ids" widget="section_and_note_one2many"
+                               mode="tree,kanban">
+                            <tree string="工作计划" create="1" edit="1" delete="1" editable="top">
+                                <field name="list_description"/>
+                                <field name="list_time"/>
+                                <field name="list_change_time"/>
+                                <field name="list_change_num"/>
+                                <field name="task_goal"/>
+                                <field name="duty_department"/>
+                                <field name="duty_person"/>
+                            </tree>
+                        </field>
+                        <div>
+                            <button string="订单投产" name="open_order_form_view" type="object" class="oe_highlight"/>
+                        </div>
+                    </group>
+                </page>
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='user_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='email_from']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='phone']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='date_deadline']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='tag_ids']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='priority']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//notebook//page[@name='extra']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//notebook//page[@name='internal_notes']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//notebook//page[@name='lead']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='probability']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,104 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="trip_manage.list">
+            <field name="name">trip_manage list</field>
+            <field name="model">trip_manage.trip_manage</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="trip_name"/>
+                    <field name="trip_time_start"/>
+                    <field name="trip_time_finish"/>
+                    <field name="trip_supervisor"/>
+                    <field name="trip_address"/>
+                    <field name="trip_client"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="trip_manage.form">
+            <field name="name">trip_manage form</field>
+            <field name="model">trip_manage.trip_manage</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="button_start" string="审核通过" type="object" invisible="state == 'tenable'"
+                                class="btn-primary" data-hotkey="q"/>
+                        <button name="button_tenable" string="返回" type="object" invisible="state != 'tenable'"
+                                class="btn-primary" data-hotkey="q"/>
+                        <field name="state" widget="statusbar"
+                        />
+
+                    </header>
+                    <sheet>
+                        <group invisible="state != 'start'">
+                            <field name="trip_name"/>
+                            <field name="trip_time_start"/>
+                            <field name="trip_time_finish"/>
+                            <field name="trip_supervisor"/>
+                            <field name="trip_address"/>
+                            <field name="trip_client"/>
+                        </group>
+                        <group invisible="state != 'tenable'">
+                            <field name="return_name"/>
+                            <field name="return_time_start"/>
+                            <field name="return_time_finish"/>
+                            <field name="return_supervisor"/>
+                            <field name="return_address"/>
+                            <field name="return_client_develop"/>
+                            <field name="return_client_unit"/>
+                            <field name="return_client_manage"/>
+                            <field name="return_client_new"/>
+                            <field name="return_us_plan"/>
+                            <field name="return_client_advice"/>
+
+
+                        </group>
+                        <notebook>
+                            <page string="待办事项" invisible="state != 'start'">
+                                <group>
+                                    <field name="todo_ids" widget="section_and_note_one2many"
+                                           mode="tree,kanban">
+                                        <tree string="代办事项" create="1" edit="1" delete="1" editablee="top">
+                                            <field name="todo_name"/>
+                                            <field name="todo_description"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+
+                            <page string="出差反馈" invisible="state != 'tenable'">
+                                <group>
+                                    <field name="return_ids" widget="section_and_note_one2many"
+                                           mode="tree,kanban">
+                                        <tree string="出差反馈" create="1" edit="1" delete="1" editablee="top">
+                                            <field name="return_name"/>
+                                            <field name="return_description"/>
+                                            <field name="return_situation"/>
+                                            <field name="return_self_description"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="trip_manage.action_window">
+            <field name="name">trip_manage window</field>
+            <field name="res_model">trip_manage.trip_manage</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem name="出差管理" id="trip_manage.menu_root"/>
+
+        <menuitem name="List" id="trip_manage.menu_1_list" parent="trip_manage.menu_root"
+                  action="trip_manage.action_window"/>
+
+    </data>
+</odoo>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态菜单示例</title>
+    <style>
+        /* 基础样式 */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* 菜单样式 */
+        #side-menu {
+            width: 250px;
+            background: #1a1a1a;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            margin: 20px;
+            color: white;
+        }
+
+        .menu-item {
+            background: #333;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .menu-item:hover {
+            background: #444;
+        }
+
+        .sub-menu-container {
+            background: #262626;
+            padding: 5px;
+            border-radius: 3px;
+            margin-top: 5px;
+            display: none; /* 默认不显示子菜单 */
+        }
+
+        .sub-menu-item {
+            padding: 5px;
+            color: #ddd;
+            transition: color 0.3s;
+        }
+
+        .sub-menu-item:hover {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div id="side-menu"></div>
+<div id="info-display" style="margin-left: 260px; padding: 20px;"></div>
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // 模拟的菜单数据
+        let menuItems = [
+            {name: "菜单1", subitems: ["子菜单1", "子菜单2"], info: "这是菜单1的信息"},
+            {name: "菜单2", subitems: ["子菜单3", "子菜单4"], info: "这是菜单2的信息"}
+        ];
+
+        // 显示菜单信息的函数
+        function displayInfo(info) {
+            const infoDisplay = document.getElementById('info-display');
+            infoDisplay.textContent = info; // 更新显示区域的内容
+        }
+
+        // 为主菜单项添加点击事件，以切换子菜单的显示状态
+        function toggleSubMenu(menuItemElement, subMenuContainer, itemInfo) {
+            menuItemElement.addEventListener('click', function (event) {
+                event.stopPropagation(); // 阻止事件冒泡到子菜单
+                subMenuContainer.style.display = subMenuContainer.style.display === 'none' ? 'block' : 'none';
+                displayInfo(itemInfo); // 显示当前菜单项的信息
+            });
+        }
+
+        // 为子菜单项添加点击事件
+        function addClickToSubMenuItem(subMenuItemElement, subItemInfo) {
+            subMenuItemElement.addEventListener('click', function (event) {
+                event.stopPropagation(); // 阻止事件冒泡
+                displayInfo(subItemInfo); // 显示当前子菜单项的信息
+            });
+        }
+
+        // 根据菜单数据动态创建菜单
+        function createMenu(menuData) {
+            const menuContainer = document.getElementById('side-menu');
+            menuContainer.innerHTML = ''; // 清空现有菜单项
+
+            menuData.forEach(item => {
+                const menuItemContainer = document.createElement('div');
+                menuItemContainer.className = 'menu-item-container';
+
+                const menuItem = document.createElement('div');
+                menuItem.className = 'menu-item';
+                menuItem.textContent = item.name;
+
+                const subMenuContainer = document.createElement('div');
+                subMenuContainer.className = 'sub-menu-container';
+
+                item.subitems.forEach((subitem, index) => {
+                    const subItemInfo = `${item.name} 的 ${subitem} 信息`;
+                    const subMenuItem = document.createElement('div');
+                    subMenuItem.className = 'sub-menu-item';
+                    subMenuItem.textContent = subitem;
+                    subMenuContainer.appendChild(subMenuItem);
+
+                    addClickToSubMenuItem(subMenuItem, subItemInfo);
+                });
+
+                menuItemContainer.appendChild(menuItem);
+                menuItemContainer.appendChild(subMenuContainer);
+                menuContainer.appendChild(menuItemContainer);
+
+                toggleSubMenu(menuItem, subMenuContainer, item.info);
+            });
+        }
+
+        createMenu(menuItems);
+    });
+
+</script>
+
+</body>
+</html>

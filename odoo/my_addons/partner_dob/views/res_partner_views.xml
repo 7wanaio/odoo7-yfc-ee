@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="inherited_res_partner_form" model="ir.ui.view">
+        <field name="name">res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="inside">
+                <div>
+                    <button string="形成商机" name="open_business_form_view" type="object" class="oe_highlight"/>
+
+
+                </div>
+            </xpath>
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="name"/>
+            </xpath>
+
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="client_code"/>
+            </xpath>
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="client_category"/>
+            </xpath>
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="crm_type"/>
+            </xpath>
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="crm_location"/>
+            </xpath>
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="enrollment_date"/>
+            </xpath>
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="employee_num"/>
+            </xpath>
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="corporation_name"/>
+            </xpath>
+
+
+            <xpath expr="//field[@name='category_id']" position="after">
+                <field name="client_description"/>
+            </xpath>
+            <xpath expr="//field[@name='category_id']" position="after">
+                <field name="crm_level"/>
+            </xpath>
+            <xpath expr="//field[@name='category_id']" position="after">
+                <field name="client_product"/>
+            </xpath>
+
+            <xpath expr="//notebook/page[@name='contact_addresses']" position="after">
+                <page string="财务信息">
+                    <group>
+                        <field name="crm_financial_code"/>
+                        <field name="crm_financial_bank"/>
+                        <field name="crm_financial_username"/>
+                        <field name="crm_financial_phone"/>
+                    </group>
+                </page>
+                <page string="地址信息">
+                    <group>
+                        <field name="crm_address_code"/>
+                        <field name="crm_address_place"/>
+                        <field name="crm_address_city"/>
+                        <field name="crm_address"/>
+                        <field name="crm_communicate_address"/>
+                    </group>
+                </page>
+            </xpath>
+
+            <xpath expr="//div[@class='o_address_format']"
+                   position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <xpath expr="//span[@class='o_form_label o_td_label']"
+                   position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+
+            <xpath expr="//field[@name='vat']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='phone']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='mobile']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='email']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='website']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='category_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <xpath expr="//notebook/page[@name='internal_notes']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='email']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <!--            <xpath expr="//notebook/page[@name='contact_addresses']" position="attributes">-->
+            <!--                <attribute name="invisible">1</attribute>-->
+            <!--            </xpath>-->
+            <xpath expr="//notebook/page[@name='sales_purchases']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+
+        </field>
+    </record>
+</odoo>

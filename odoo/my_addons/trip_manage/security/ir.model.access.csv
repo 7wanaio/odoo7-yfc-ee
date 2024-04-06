@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_trip_manage_trip_manage,trip_manage.trip_manage,model_trip_manage_trip_manage,base.group_user,1,1,1,1
+access_todo_todo,todo.todo,model_todo_todo,base.group_user,1,1,1,1
+access_return_callback,return.callback,model_return_callback,base.group_user,1,1,1,1
+

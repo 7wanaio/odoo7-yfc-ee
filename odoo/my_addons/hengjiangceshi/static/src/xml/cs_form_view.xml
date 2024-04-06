@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="cs.FormView"  owl="1">
+<!--        <xpath expr="//button[hasclass('o_form_button_create')]" position="after">-->
+<!--            <t t-call="awesome_tshirt.OrderFormView.Button.PrintLabel"/>-->
+<!--        </xpath>-->
+        <div class="d-flex">
+            <div class="  d-flex p-2 bg-info" style="width:10% ; height:100%" id="tree">
+            </div>
+
+            <div class="p-2" style="width:45%; height:60%; overflow: auto;">
+                <t t-call="web.FormView"></t>
+            </div>
+
+            <div class="d-flex p-2" id="analysis_chart" style="width:30%">
+                    helloworld
+            </div>
+        </div>
+    </t>
+
+
+
+
+</templates>

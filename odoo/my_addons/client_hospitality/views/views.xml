@@ -1,0 +1,116 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="client_hospitality.list">
+            <field name="name">client_hospitality list</field>
+            <field name="model">client_hospitality.client_hospitality</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="client_name"/>
+                    <field name="client_visit_time"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="client_hospitality.form">
+            <field name="name">client_hospitality form</field>
+            <field name="model">client_hospitality.client_hospitality</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="client_name"/>
+                            <field name="client_visit_time"/>
+                        </group>
+                        <notebook>
+                            <page string="来客人员">
+                                <group>
+                                    <field name="client_member_ids" widget="section_and_note_one2many"
+                                           mode="tree,kanban">
+                                        <tree string="来客人员" create="1" edit="1" delete="1">
+                                            <field name="client_member_name"/>
+                                            <field name="client_member_unit"/>
+                                            <field name="client_member_duty"/>
+                                            <field name="client_member_hotel"/>
+                                            <field name="client_member_phone"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="接待用车安排">
+                                <group>
+                                    <field name="car_member_ids" widget="section_and_note_one2many" mode="tree,kanban">
+                                        <tree string="接待用车安排" create="1" edit="1" delete="1">
+                                            <field name="car_member_time"/>
+                                            <field name="car_member_togo"/>
+                                            <field name="car_member_number"/>
+                                            <field name="car_member_duty"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="来客到公司工作计划安排">
+                                <group>
+                                    <field name="work_member_ids" widget="section_and_note_one2many" mode="tree,kanban">
+                                        <tree string="来客到公司工作计划安排" create="1" edit="1" delete="1">
+                                            <field name="work_member_time"/>
+                                            <field name="car_member_togo"/>
+
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="责任人信息">
+                                <group>
+                                    <field name="relate_member_ids" widget="section_and_note_one2many"
+                                           mode="tree,kanban">
+                                        <tree string="责任人信息" create="1" edit="1" delete="1">
+                                            <field name="relate_code"/>
+                                            <field name="relate_department"/>
+                                            <field name="relate_person"/>
+                                            <field name="relate_duty"/>
+                                            <field name="relate_telephone"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                        </notebook>
+
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="hospitality_search_view" model="ir.ui.view">
+            <field name="name">search_view</field>
+            <field name="model">client_hospitality.client_hospitality</field>
+            <field name="arch" type="xml">
+                <search>
+                    <searchpanel>
+                        <field name="client_name"/>
+                    </searchpanel>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="client_hospitality.action_window">
+            <field name="name">client_hospitality window</field>
+            <field name="res_model">client_hospitality.client_hospitality</field>
+            <field name="view_mode">tree,form,search</field>
+        </record>
+
+
+        <menuitem name="接待" id="client_hospitality.menu_root"/>
+
+
+        <menuitem name="List" id="client_hospitality.menu_1_list" parent="client_hospitality.menu_root"
+                  action="client_hospitality.action_window"/>
+
+    </data>
+</odoo>

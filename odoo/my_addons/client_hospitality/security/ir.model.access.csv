@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_client_hospitality_client_hospitality,client_hospitality.client_hospitality,model_client_hospitality_client_hospitality,base.group_user,1,1,1,1
+access_client_car,client.car,model_client_car,base.group_user,1,1,1,1
+access_client_work,client.work,model_client_work,base.group_user,1,1,1,1
+access_client_relate,client.relate,model_client_relate,base.group_user,1,1,1,1
+access_client_member,client.member,model_client_member,base.group_user,1,1,1,1

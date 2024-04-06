@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_technique_decision,technique.decision,model_technique_decision,base.group_user,1,1,1,1
+access_business_decision,business.decision,model_business_decision,base.group_user,1,1,1,1
+access_progress_plan,progress.plan,model_progress_plan,base.group_user,1,1,1,1
+access_list_description,list.description,model_list_description,base.group_user,1,1,1,1
+
